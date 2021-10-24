@@ -14,7 +14,7 @@ end
 def create
   Application.create!(appliction_params)
 
-  redirect_to '/applications'
+  redirect_to "/applications/#{params[:id]}"
 end
 
 private
