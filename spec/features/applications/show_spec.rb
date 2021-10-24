@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'the application show' do
   before :each do
     @shelter = Shelter.create!(name: 'Mystery Building', city: 'Irvine CA', foster_program: false, rank: 9)
-    @application1 = Application.create!(name: 'John Smith', address: '123 Main St. Denver, CO 80202', description: "I'm cool", status: 'In Progress')
+    @application1 = Application.create!(name: 'John Smith', address: '123 Main St. Denver, CO 80202', description: "I'm cool", status: '')
     @pet1 = @application1.pets.create!(name: 'Scooby', age: 2, breed: 'Great Dane', adoptable: true, shelter_id: @shelter.id)
     @pet2 = @application1.pets.create!(name: 'Rover', age: 3, breed: 'Pitbull', adoptable: true, shelter_id: @shelter.id)
   end

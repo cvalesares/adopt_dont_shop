@@ -20,9 +20,9 @@ end
 private
 
   def application_params
-    result = {name: params[:name],
-              address: params[:address],
-              pets: params[:pets],
-              status: params[:status]}
+    if params[:status] == nil || params[:status] == ""
+      params[:status] = 'In Progress'
+    end
+    params.permit(:name, :address, :description, :status)
   end
 end
