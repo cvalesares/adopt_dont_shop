@@ -12,17 +12,18 @@ def show
 end
 
 def create
-  Application.create!(appliction_params)
-
-  redirect_to "/applications/#{params[:id]}"
+  application = Application.new(application_params)
+  if application.save
+    redirect_to "/applications/#{application.id}"
+  else
+    flash[:notice] = "Error: #{error_message(application.errors)}"
+   render :new
+  end
 end
 
 private
 
   def application_params
-    if params[:status] == nil || params[:status] == ""
-      params[:status] = 'In Progress'
-    end
-    params.permit(:name, :address, :description, :status)
+    params.permit(:name, :street, :city, :state, :zip, :description, :status)
   end
 end

@@ -86,16 +86,12 @@ RSpec.describe 'the pets index' do
     shelter = Shelter.create(name: 'Aurora shelter', city: 'Aurora, CO', foster_program: false, rank: 9)
     pet_1 = Pet.create(adoptable: true, age: 1, breed: 'sphynx', name: 'Lucille Bald', shelter_id: shelter.id)
     pet_2 = Pet.create(adoptable: true, age: 3, breed: 'doberman', name: 'Lobster', shelter_id: shelter.id)
-    application1 = Application.create!(name: 'John Smith', address: '123 Main St. Denver, CO 80202', description: "I'm cool", status: 'In Progress')
+    application1 = Application.create!(name: 'John Smith', street: '123 Main St', city: 'Tampa', state: 'FL', zip: 33602, description: "I'm cool")
 
     visit "/pets"
 
     expect(page).to have_link("Start Application")
     click_link("Start Application")
     expect(current_path).to eq("/applications/new")
-
-    visit "/applications/#{application1.id}"
-    save_and_open_page
-    expect(page).to have_content("In Progress")
   end
 end
