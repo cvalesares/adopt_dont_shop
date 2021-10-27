@@ -6,3 +6,11 @@
 <p><%= @application.zip %> </p>
 <h3> Description: <%= @application.description %></h3>
 <h3> Status: <%= @application.status %></h3>
+
+<p> Add Pet </p>
+<%= form_with url: "/applications/#{@application.id}", method: :patch, local: true do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.submit "Search" %>
+<% end %>
